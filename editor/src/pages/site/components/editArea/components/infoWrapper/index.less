@@ -1,0 +1,27 @@
+@tit_hei: 36px;
+
+.wrapper {
+  display: block;
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .title {
+    height: @tit_hei;
+    line-height: @tit_hei;
+    font-size: 18px;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      top: 2px;
+      width: 8px;
+      height: @tit_hei/3*2;
+      margin-right: 4px;
+      background: #000;
+    }
+  }
+}

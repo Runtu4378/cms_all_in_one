@@ -1,0 +1,4 @@
+<div>
+  <h4>this is a box</h4>
+  <h1>{{ text }}</h1>
+</div>

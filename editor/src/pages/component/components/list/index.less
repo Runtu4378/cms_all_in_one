@@ -1,0 +1,38 @@
+@paddingSide: 6px;
+@borColor: @layout_component_border_color;
+
+.container {
+  width: 240px;
+  flex-shrink: 0;
+
+  .btn {
+    margin-top: 10px;
+    width: 100%;
+  }
+  .list {
+    // margin: 0 -@paddingSide;
+  
+    .item {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid @borColor;
+      height: 42px;
+      line-height: 42px;
+      padding: 0 @paddingSide;
+
+      .name {
+        flex: 1;
+        text-overflow: clip;
+      }
+    
+      &:hover,
+      &.active {
+        background-color: @borColor;
+      }
+    
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

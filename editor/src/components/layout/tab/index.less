@@ -1,0 +1,61 @@
+@title_height: 34px;
+
+.container {
+  position: relative;
+  background-color: @layout_component_bg_color;
+  
+  .title {
+    height: @title_height;
+    line-height: @title_height;
+    padding: 0 6px;
+    border-bottom: 1px solid @layout_component_border_color;
+  }
+  .content {
+    position: absolute;
+    top: @title_height;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: @layout_spacing_vertical @layout_spacing_horizontal;
+  }
+}
+
+// 横列表式
+.sudoku_l {
+  border: 1px solid @layout_component_border_color;
+  border-width: 1px 1px 1px 0;
+  margin-right: @layout_spacing_horizontal;
+}
+.sudoku_m {
+  border: 1px solid @layout_component_border_color;
+  border-width: 1px;
+  margin-right: @layout_spacing_horizontal;
+}
+.sudoku_r {
+  border: 1px solid @layout_component_border_color;
+  border-width: 1px 0 1px 1px;
+}
+
+// 九宫格式
+.sudoku_1 {
+  border: 1px solid @layout_component_border_color;
+  border-width: 0 1px 1px 0;
+  margin-right: @layout_spacing_vertical;
+  margin-bottom: @layout_spacing_horizontal;
+}
+.sudoku_2 {
+  border: 1px solid @layout_component_border_color;
+  border-width: 0 0 1px 0;
+  margin-bottom: @layout_spacing_horizontal;
+}
+.sudoku_3 {
+  border: 1px solid @layout_component_border_color;
+  border-width: 0 0 1px 1px;
+  margin-left: @layout_spacing_vertical;
+  margin-bottom: @layout_spacing_horizontal;
+}
+
+// 无外边距模式
+.noMargin {
+  margin: 0;
+}

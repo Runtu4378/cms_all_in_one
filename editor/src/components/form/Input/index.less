@@ -1,0 +1,20 @@
+.outer {
+  :global(.ant-input-group-wrapper) {
+    display: block;
+  }
+  :global(.ant-input-group-addon) {
+    background-color: #fff;
+  }
+}
+
+.clear {
+  cursor: pointer;
+
+  &:before {
+    transition: all .3s ease;
+  }
+  &:active:before {
+    position: relative;
+    top: 1px;
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "editor-umi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "umi dev",
+    "build": "umi build"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "antd": "3.9.1",
+    "art-template": "^4.12.2",
+    "axios": "^0.18.0",
+    "codemirror": "^5.39.0",
+    "codemirror-emmet": "^1.0.0",
+    "debounce": "^1.1.0",
+    "dva-model-extend": "^0.1.2",
+    "nprogress": "^0.2.0",
+    "pify": "^3.0.0",
+    "react-codemirror2": "^5.1.0",
+    "react-copy-to-clipboard": "^5.0.1"
+  },
+  "devDependencies": {
+    "umi": "^1.3.13",
+    "umi-plugin-dva": "^0.9.1"
+  }
+}

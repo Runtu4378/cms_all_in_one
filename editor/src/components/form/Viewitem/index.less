@@ -1,0 +1,38 @@
+.outer {
+  margin-bottom: 10px;
+
+  .content {
+    display: flex;
+    font-size: 16px;
+
+    &:hover {
+      .copy {
+        opacity: 1;
+      }
+    }
+  }
+  .noContent {
+    flex-shrink: 1;
+    color: #f14134;
+  }
+  .hadContent {
+    flex-shrink: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .copyCon {
+    flex: 1;
+    flex-basis: 1.6em;
+    text-align: left;
+    font-size: 18px;
+  }
+  .copy {
+    width: 1.6em;
+    text-align: right;
+    cursor: pointer;
+    opacity: 0;
+    font-size: 18px;
+  }
+}

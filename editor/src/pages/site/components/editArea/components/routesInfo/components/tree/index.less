@@ -1,0 +1,34 @@
+:global(.cms-tree) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  & li {
+    margin: 0;
+    padding: 4px 0;
+    list-style: none;
+    white-space: nowrap;
+    outline: 0;
+  }
+
+  :global(.cms-children-node) {
+    // :global(.cms-tree-switcher) {
+    //   margin: 0;
+    //   width: 24px;
+    //   height: 100%;
+    //   line-height: 24px;
+    //   display: inline-block;
+    //   vertical-align: center;
+    //   text-align: center;
+    // }  
+    :global(.cms-tree-node-content-wrapper) {
+      padding: 0 5px;
+      cursor: pointer;
+    }
+  }
+
+  :global(.cms-tree-child-tree) {
+    position: relative;
+    padding: 0 0 0 20px;
+  }
+}

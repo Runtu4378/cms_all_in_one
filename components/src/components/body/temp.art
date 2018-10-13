@@ -1,0 +1,3 @@
+{{ each childrens }}
+  {{@ $value }}
+{{ /each }}

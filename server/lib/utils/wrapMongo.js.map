@@ -1,0 +1,1 @@
+{"version":3,"sources":["utils/wrapMongo.js"],"names":["wrap","target","module","exports"],"mappings":";;AAAA,IAAMA,OAAO,SAAPA,IAAO,CAACC,MAAD,EAAY;AACvB;AACD,CAFD;;AAIAC,OAAOC,OAAP,GAAiBH,IAAjB","file":"wrapMongo.js","sourceRoot":"../../src"}

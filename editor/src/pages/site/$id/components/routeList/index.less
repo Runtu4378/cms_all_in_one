@@ -1,0 +1,63 @@
+.container {
+  width: 300px;
+
+  .listCon {
+    .listItem {
+      padding: 6px 10px;
+      cursor: pointer;
+
+      &.active,
+      &:hover {
+        margin-bottom: 6px;
+        border: 1px solid #efefef;
+
+        .pageList {
+          max-height: 500px;
+          overflow: auto;
+        }
+      }
+
+      .content {
+        display: flex;
+        .title {
+          flex: 1;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .btn-area {
+          :global(.ant-btn) {
+            margin-right: 8px;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+      .pageList {
+        max-height: 0;
+        overflow: hidden;
+        padding-left: 6px;
+
+        .pageCon {
+          border-radius: 2px;
+          border-bottom: 1px solid #ccc;
+          .active {
+            background-color: #ccc;
+          }
+          &:last-child {
+            border-bottom: none;
+          }
+          &:hover {
+            .active;
+          }
+
+          .context {
+            white-space: pre;
+          }
+        }
+      }
+    }
+  }
+}

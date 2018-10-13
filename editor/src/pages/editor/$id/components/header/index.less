@@ -1,0 +1,46 @@
+@hei: 40px;
+
+ul,li {
+  list-style: none;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: @hei;
+  padding: 0 @layout_spacing_vertical;
+  background: #fff;
+  border-bottom: 1px solid @layout_component_border_color;
+  // margin-bottom: @layout_spacing_vertical;
+
+  .mid {
+    flex: 1;
+  }
+  .nav {
+    display: flex;
+    height: @hei;
+    border-bottom: 0;
+    .innerDiv {
+      height: @hei;
+      line-height: @hei;
+      margin-right: @layout_spacing_vertical;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      :global(.ant-btn) {
+        height: 0.8 * @hei;
+      }
+    }
+    .noText {
+      :global(.anticon) {
+        margin-right: 0;
+      }
+    }
+    :global(.ant-menu-item) {
+      height: 36px;
+      line-height: 36px;
+    }
+  }
+}

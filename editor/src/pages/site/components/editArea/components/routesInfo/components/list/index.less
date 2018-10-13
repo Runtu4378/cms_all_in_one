@@ -1,0 +1,26 @@
+.container {
+  border: 1px solid #efefef;
+  margin-bottom: 10px;
+
+  .treeDom {
+    font-size: 16px;
+    cursor: default;
+    &:hover {
+      background-color: #eee;
+    }
+
+    .title {
+      height: 36px;
+      line-height: 36px;
+    }
+    .btnArea {
+      margin-top: 8px;
+      :global(.ant-btn) {
+        margin-right: 10px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build:watch",
+    "dev": "webpack-dev-server --config ./webpack.config.dev.js",
+    "build": "webpack --config ./webpack.config.dev.js",
+    "build:watch": "webpack --watch --config ./webpack.config.dev.js",
+    "build:com": "webpack --config ./webpack.config.com.js",
+    "dll": "webpack --config ./webpack.config.dll.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "art-template": "^4.12.2"
+  },
+  "devDependencies": {
+    "art-template-loader": "^1.4.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "expose-loader": "^0.7.5",
+    "webpack": "^4.13.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
