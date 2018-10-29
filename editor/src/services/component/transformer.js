@@ -1,6 +1,29 @@
 import progress from 'nprogress'
 import 'nprogress/nprogress.css'
+import loadjs from 'loadjs'
 import pify from 'pify'
+
+const CONFIG = {
+  BABEL_CDN: 'https://cdn.jsdelivr.net/npm/@babel/standalone@7.0.0-beta.32/babel.min.js',
+}
+
+function asyncLoad (resources, name) {
+  return new Promise((resolve, reject) => {
+    if (loadjs.isDefined(name)) {
+      resolve()
+    } else {
+      loadjs(resources, name, {
+        success () {
+          resolve()
+        },
+        error () {
+          progress.done()
+          reject(new Error('network error'))
+        },
+      })
+    }
+  })
+}
 
 class Transformers {
   /**
@@ -15,6 +38,8 @@ class Transformers {
       await loadLess()
     }  else if (type === 'artm') {
       await loadArtm()
+    } else if (type === 'vue') {
+      await loadVue()
     } else {
       throw new Error('incorrect type of compiler')
     }
@@ -60,6 +85,21 @@ async function loadArtm () {
     const artm = await import('art-template/lib/template-web.js')
     transformers.set('artm', artm)
     progress.done()
+  }
+}
+
+// 挂载 vue 编译器
+async function loadVue () {
+  if (!transformers.test('vue')) {
+    process.start()
+    const [, VuePreset, VueJSXMergeProps] = await Promise.all([
+      asyncLoad(CONFIG.BABEL_CDN, 'babel'),
+      import(/* webpackChunkName: "babel-stuffs" */ 'babel-preset-vue/dist/babel-preset-vue'), // use umd bundle since we don't want to parse `require`
+      import(/* webpackChunkName: "babel-stuffs" */ '!raw-loader!./vue-jsx-merge-props'),
+    ])
+    transformers.set('VuePreset', VuePreset)
+    transformers.set('VueJSXMergeProps', VueJSXMergeProps)
+    process.done()
   }
 }
 
