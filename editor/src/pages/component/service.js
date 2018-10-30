@@ -10,13 +10,10 @@ export function list () {
   })
 }
 
-export function create (name, type) {
+export function create (data) {
   return request({
     method: 'post',
     url: component,
-    data: {
-      name,
-      type,
-    },
+    data,
   })
 }

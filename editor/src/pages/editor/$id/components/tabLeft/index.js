@@ -23,6 +23,14 @@ import Pan from '../editor'
 //   stylus: 'text/x-styl',
 // }
 
+// 模式定义
+const modes = {
+  'artm': 'htmlmixed',
+  'less': 'text/x-less',
+  'js': 'javascript',
+  'vue': 'jsx',
+}
+
 const TabLeft = ({
   dispatch,
   loading,
@@ -31,13 +39,23 @@ const TabLeft = ({
   const {
     editItem,
   } = editor
+  const {
+    code_type,
+    html_transformer,
+    css_transformer,
+    js_transformer,
+  } = editItem
+
+  // props definition
+  const htmlPanVisible = code_type === 'vue' ? false : true
+  const cssPanVisible = code_type === 'vue' ? false : true
 
   const panHtml = {
     loading: loading.effects['editor/enter'],
     title: 'Html',
     height: '30%',
     editor: {
-      mode: 'htmlmixed',
+      mode: modes[html_transformer],
       code: editItem.html_code,
       onChange: (code) => {
         dispatch({
@@ -52,7 +70,7 @@ const TabLeft = ({
     title: 'Less',
     height: '30%',
     editor: {
-      mode: 'text/x-less',
+      mode: modes[css_transformer],
       code: editItem.css_code,
       onChange: (code) => {
         dispatch({
@@ -65,9 +83,9 @@ const TabLeft = ({
   const panJs = {
     loading: loading.effects['editor/enter'],
     title: 'Javascript',
-    height: '40%',
+    height: `${40 + (htmlPanVisible?0:30) + (cssPanVisible?0:30)}%`,
     editor: {
-      mode: 'javascript',
+      mode: modes[js_transformer],
       code: editItem.js_code,
       onChange: (code) => {
         dispatch({
@@ -80,9 +98,9 @@ const TabLeft = ({
   return (
     <div className={les.container}>
       {/* html编辑器 */}
-      <Pan {...panHtml} />
+      {htmlPanVisible && <Pan {...panHtml} />}
       {/* less编辑器 */}
-      <Pan {...panLess} />
+      {cssPanVisible && <Pan {...panLess} />}
       {/* js编辑器 */}
       <Pan {...panJs}/>
     </div>

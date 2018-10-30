@@ -60,7 +60,7 @@ export default moduleExtend(model, {
     },
     // 创建组件
     * createComponent ({ payload }, { call, put }) {
-      const { success, data } = yield call(create, payload.name, payload.type)
+      const { success, data } = yield call(create, payload)
       if (success) {
         message.success('创建成功')
         yield put({ type: 'showCreate', show: false })

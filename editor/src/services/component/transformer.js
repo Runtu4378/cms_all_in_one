@@ -38,8 +38,10 @@ class Transformers {
       await loadLess()
     }  else if (type === 'artm') {
       await loadArtm()
-    } else if (type === 'vue') {
-      await loadVue()
+    } else if (type === 'VuePreset') {
+      await loadVuePreset()
+    } else if (type === 'VueJSXMergeProps') {
+      await loadVueJSXMergeProps()
     } else {
       throw new Error('incorrect type of compiler')
     }
@@ -89,17 +91,28 @@ async function loadArtm () {
 }
 
 // 挂载 vue 编译器
-async function loadVue () {
-  if (!transformers.test('vue')) {
-    process.start()
-    const [, VuePreset, VueJSXMergeProps] = await Promise.all([
-      asyncLoad(CONFIG.BABEL_CDN, 'babel'),
-      import(/* webpackChunkName: "babel-stuffs" */ 'babel-preset-vue/dist/babel-preset-vue'), // use umd bundle since we don't want to parse `require`
-      import(/* webpackChunkName: "babel-stuffs" */ '!raw-loader!./vue-jsx-merge-props'),
-    ])
+async function loadVuePreset () {
+  if (!transformers.test('VuePreset')) {
+    progress.start()
+    if (!loadjs.isDefined('babel')) {
+      await asyncLoad(CONFIG.BABEL_CDN, 'babel')
+    }
+    const VuePreset = await import(/* webpackChunkName: "babel-stuffs" */ 'babel-preset-vue/dist/babel-preset-vue')
     transformers.set('VuePreset', VuePreset)
+    progress.done()
+  }
+}
+
+// 挂载VueJSXMergeProps编译器
+async function loadVueJSXMergeProps () {
+  if (!transformers.test('VueJSXMergeProps')) {
+    progress.start()
+    if (!loadjs.isDefined('babel')) {
+      await asyncLoad(CONFIG.BABEL_CDN, 'babel')
+    }
+    const VueJSXMergeProps = await import(/* webpackChunkName: "babel-stuffs" */ '!raw-loader!./vue-jsx-merge-props')
     transformers.set('VueJSXMergeProps', VueJSXMergeProps)
-    process.done()
+    progress.done()
   }
 }
 
