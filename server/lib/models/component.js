@@ -13,6 +13,7 @@ var ComponentSchema = new Schema({
   name: { type: String, required: true },
   type: { type: String, required: true, enum: ['PURE', // 纯组件（不含子组件）
     'RICH'] },
+  code_type: { type: String, required: true, enum: ['artm', 'vue'] },
   html_code: String,
   html_transformer: { type: String, required: true, enum: ['html', // 纯html代码编译
     'artm'] },

@@ -13,6 +13,10 @@ const ComponentSchema = new Schema({
     'PURE', // 纯组件（不含子组件）
     'RICH',  // 富组件（可以拥有子组件）
   ] },
+  code_type: { type: String, required: true, enum: [
+    'artm',
+    'vue',
+  ]},
   html_code: String,
   html_transformer: { type: String, required: true, enum: [
     'html', // 纯html代码编译

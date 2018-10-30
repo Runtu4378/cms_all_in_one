@@ -14,6 +14,9 @@ var router = function router(app) {
     next();
   });
 
+  app.get('/', function (req, res) {
+    res.send('hello world');
+  });
   app.use('/api/site', site);
   app.use('/api/component', component);
   app.use('/api/route', route);
