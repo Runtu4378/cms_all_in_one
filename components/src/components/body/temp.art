@@ -1,3 +1,0 @@
-{{ each childrens }}
-  {{@ $value }}
-{{ /each }}

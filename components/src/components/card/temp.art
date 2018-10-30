@@ -1,5 +1,0 @@
-<div>
-  <h1>{{ text }}</h1>
-  <h4>hello world!</h4>
-  <div>{{ list }}</div>
-</div>
