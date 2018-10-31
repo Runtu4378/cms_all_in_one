@@ -3,6 +3,7 @@
 var site = require('./site');
 var component = require('./component');
 var route = require('./route');
+var build = require('./build');
 
 var router = function router(app) {
   app.all('/api/*', function (req, res, next) {
@@ -20,6 +21,8 @@ var router = function router(app) {
   app.use('/api/site', site);
   app.use('/api/component', component);
   app.use('/api/route', route);
+
+  app.use('/api/build', build);
 };
 
 module.exports = router;

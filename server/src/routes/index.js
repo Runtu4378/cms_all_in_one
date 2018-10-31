@@ -1,6 +1,7 @@
 const site = require('./site')
 const component = require('./component')
 const route = require('./route')
+const build = require('./build')
 
 const router = (app) => {
   app.all('/api/*', function(req, res, next){
@@ -18,6 +19,8 @@ const router = (app) => {
   app.use('/api/site', site)
   app.use('/api/component', component)
   app.use('/api/route', route)
+
+  app.use('/api/build', build)
 }
 
 module.exports = router
