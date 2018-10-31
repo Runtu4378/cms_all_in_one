@@ -39,11 +39,10 @@ router.get('/:_id', (req, res) => {
 
 // 新增条目
 router.post('/', (req, res) => {
-  const { name, type, code_type } = req.body
+  const { name, type } = req.body
   Component.create({
     name,
     type,
-    code_type,
     html_code: '<div class="hello">Hello world</div>\r',
     html_proptypes: [],
     html_transformer: 'artm',

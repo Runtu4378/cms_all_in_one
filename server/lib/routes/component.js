@@ -53,13 +53,11 @@ router.get('/:_id', function (req, res) {
 router.post('/', function (req, res) {
   var _req$body = req.body,
       name = _req$body.name,
-      type = _req$body.type,
-      code_type = _req$body.code_type;
+      type = _req$body.type;
 
   Component.create({
     name: name,
     type: type,
-    code_type: code_type,
     html_code: '<div class="hello">Hello world</div>\r',
     html_proptypes: [],
     html_transformer: 'artm',
