@@ -46,13 +46,9 @@ const TabLeft = ({
     js_transformer,
   } = editItem
 
-  // props definition
-  const htmlPanVisible = true
-  const cssPanVisible = true
-
   const panHtml = {
     loading: loading.effects['editor/enter'],
-    title: 'Html',
+    title: 'Template',
     height: '30%',
     editor: {
       mode: modes[html_transformer],
@@ -67,7 +63,7 @@ const TabLeft = ({
   }
   const panLess = {
     loading: loading.effects['editor/enter'],
-    title: 'Less',
+    title: 'Style',
     height: '30%',
     editor: {
       mode: modes[css_transformer],
@@ -82,8 +78,8 @@ const TabLeft = ({
   }
   const panJs = {
     loading: loading.effects['editor/enter'],
-    title: 'Javascript',
-    height: `${40 + (htmlPanVisible?0:30) + (cssPanVisible?0:30)}%`,
+    title: 'Script',
+    height: '40%',
     editor: {
       mode: modes[js_transformer],
       code: editItem.js_code,
@@ -98,9 +94,9 @@ const TabLeft = ({
   return (
     <div className={les.container}>
       {/* html编辑器 */}
-      {htmlPanVisible && <Pan {...panHtml} />}
+      <Pan {...panHtml} />
       {/* less编辑器 */}
-      {cssPanVisible && <Pan {...panLess} />}
+      <Pan {...panLess} />
       {/* js编辑器 */}
       <Pan {...panJs}/>
     </div>

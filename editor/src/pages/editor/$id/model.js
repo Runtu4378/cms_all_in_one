@@ -3,8 +3,8 @@ import pathToRegexp from 'path-to-regexp'
 import { routerRedux } from 'dva/router'
 import { message } from 'antd'
 import { model } from 'utils/model'
-import Component from 'services/component'
-import { details, update, vueBuild } from './service'
+import Component from 'services/vue_builder/component'
+import { details, update } from './service'
 
 const componentInit = {
   _id: null,
@@ -92,63 +92,17 @@ export default moduleExtend(model, {
       yield put({ type: 'updateState', payload: { autoRun: !nowVal } })
     },
     // 编译组件，生成iframe字符串
-    * buildComponent (inval, { select, call, put }) {
+    * buildComponent (inval, { select, put }) {
       const { editItem } = yield select(({ editor }) => editor)
-      if (editItem.code_type === 'vue') {
-        const { success, data } = yield call(vueBuild, {
-          html_code: editItem.html_code,
-          css_code: editItem.css_code,
-          js_code: editItem.js_code,
-
-          name: editItem.name,
-        })
-        if (success) {
-          const htmlStr = `
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-  <div id="app"><${editItem.name} /></div>
-</body>
-<script>
-if (window.Vue) {
-  window.Vue.config.productionTip = false;
-}
-// console.clear();
-document.addEventListener('DOMContentLoaded', __executeCodePan);
-function __executeCodePan(){
-  window.parent.postMessage({ type: 'iframe-success' }, '*');
-  try {
-    ${data.trim()}
-    console.log(${editItem.name})
-    new Vue({
-      el: '#app',
-      components: { ${editItem.name}: ${editItem.name}.default },
-    })
-  } catch (err) {
-    window.parent.postMessage(
-      {
-        type: 'iframe-error',
-        message: err.frame ? err.message + '\\n' + err.frame : err.stack
-      },
-      '*'
-    )
-  }
-};
-</script>
-</html>
-`
-          yield put({ type: 'updateState', payload: { htmlStr } })
-        } else {
-          throw new Error(data)
-        }
-      } else {
-        const compiler = new Component(editItem)
-        const res = yield call(compiler.renderStr)
-        yield put({ type: 'updateState', payload: { htmlStr: res } })
-      }
+      const component = new Component({
+        name: editItem.name,
+        
+        template: editItem.html_code,
+        style: editItem.css_code,
+        script: editItem.js_code,
+      })
+      const htmlStr = yield component.render()
+      yield put({ type: 'updateState', payload: { htmlStr } })
     },
     // 显示新增键值弹窗
     * showCreateKey ({ createKeyType }, { put }) {

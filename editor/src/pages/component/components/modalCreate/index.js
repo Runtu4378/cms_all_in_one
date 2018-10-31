@@ -73,31 +73,6 @@ class ModalCreate extends React.Component {
           ],
         },
       },
-      {
-        form,
-        inputType: 'Radio',
-        name: 'code_type',
-        label: '语法类型',
-        value: '',
-        son: [
-          {
-            value: 'artm',
-            label: 'artm',
-            tips: 'art-template + css + js',
-          },
-          {
-            value: 'vue',
-            label: 'vue',
-            tips: 'vueJS',
-          },
-        ],
-        options: {
-          initialValue: 'artm',
-          rules: [
-            { required: true, message: '请选择组件类型' },
-          ],
-        },
-      },
     ]
 
     return (
