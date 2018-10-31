@@ -13,12 +13,15 @@ router.post('/vue', function (req, res) {
   var _req$body = req.body,
       html_code = _req$body.html_code,
       css_code = _req$body.css_code,
-      js_code = _req$body.js_code;
+      js_code = _req$body.js_code,
+      name = _req$body.name;
 
   var builder_process = new builder({
     html: html_code,
     css: css_code,
-    js: js_code
+    js: js_code,
+
+    libraryName: name
   });
   builder_process.start().then(function (data) {
     dealRes(res, 200, data);

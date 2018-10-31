@@ -2,6 +2,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = ({
   paths,
+  libraryName,
 }) => {
   return {
     // mode: 'development',
@@ -29,6 +30,7 @@ module.exports = ({
     output: {
       path: paths.TEMP_DIR,
       filename: paths.OUTPUT,
+      library: libraryName || false,
     },
     module: {
       rules: [

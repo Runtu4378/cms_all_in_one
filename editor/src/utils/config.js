@@ -5,5 +5,6 @@ module.exports = {
     route: '/route',
     routeTemplate: '/route/template',
     component: '/component',
+    buildVue: '/build/vue',
   },
 }

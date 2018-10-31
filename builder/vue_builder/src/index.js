@@ -9,10 +9,14 @@ class Builder {
     html,
     css,
     js,
+
+    libraryName,
   }) {
     this.template = html
     this.style = css
     this.script = js
+
+    this.libraryName = libraryName
   }
 
   start() {
@@ -43,7 +47,7 @@ class Builder {
       ENTRY,
       OUTPUT,
     }
-    const conf = confDev({ paths })
+    const conf = confDev({ paths, libraryName: this.libraryName })
     return new Promise((resolve, reject) => {
       webpack(conf, (err, stats) => {
         if (err || stats.hasErrors()) {
@@ -57,7 +61,7 @@ class Builder {
           path.resolve(TEMP_DIR, OUTPUT),
           'utf-8',
         )
-        resolve(JSON.stringify(resCode))
+        resolve(resCode)
       })
     })
   }

@@ -8,11 +8,15 @@ router.post('/vue', (req, res) => {
     html_code,
     css_code,
     js_code,
+
+    name,
   } = req.body
   const builder_process = new builder({
     html: html_code,
     css: css_code,
     js: js_code,
+
+    libraryName: name,
   })
   builder_process.start()
     .then(data => {

@@ -40,15 +40,15 @@ const TabLeft = ({
     editItem,
   } = editor
   const {
-    code_type,
+    // code_type,
     html_transformer,
     css_transformer,
     js_transformer,
   } = editItem
 
   // props definition
-  const htmlPanVisible = code_type === 'vue' ? false : true
-  const cssPanVisible = code_type === 'vue' ? false : true
+  const htmlPanVisible = true
+  const cssPanVisible = true
 
   const panHtml = {
     loading: loading.effects['editor/enter'],
