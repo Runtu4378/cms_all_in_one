@@ -2,7 +2,7 @@ import moduleExtend from 'dva-model-extend'
 import pathToRegexp from 'path-to-regexp'
 import { model } from 'utils/model'
 // import { message } from 'antd'
-import Template from 'services/template'
+import Template from 'services/vue_builder/template'
 import {
   details,
   routeList,
@@ -140,7 +140,7 @@ export default moduleExtend(model, {
     * renderTemplate (inval, { select, call, put }) {
       const { templateList } = yield select(({ siteEdit }) => siteEdit)
       const template = new Template(templateList)
-      const res = yield call(template.renderStr)
+      const res = yield call(template.render)
       yield put({
         type: 'updateState',
         payload: { htmlStr: res },

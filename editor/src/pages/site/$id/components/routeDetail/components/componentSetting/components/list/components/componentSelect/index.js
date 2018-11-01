@@ -28,7 +28,7 @@ const ComponentSelect = (props) => {
     title: '选择组件',
     width: '70%',
     placement: 'left',
-    wrapClassName: les.drawer,
+    className: les.drawer,
     visible: componentSelectState,
     destroyOnClose: true,
     onClose: hideComponentSelect,

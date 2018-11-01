@@ -99,7 +99,9 @@ export default moduleExtend(model, {
         
         template: editItem.html_code,
         style: editItem.css_code,
+        style_props: editItem.css_props,
         script: editItem.js_code,
+        script_props: editItem.js_props,
       })
       const htmlStr = yield component.render()
       yield put({ type: 'updateState', payload: { htmlStr } })

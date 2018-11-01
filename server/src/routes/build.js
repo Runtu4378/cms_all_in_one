@@ -20,7 +20,16 @@ router.post('/vue', (req, res) => {
   })
   builder_process.start()
     .then(data => {
-      dealRes(res, 200, data)
+      dealRes(res, 200, {
+        input: {
+          html_code,
+          css_code,
+          js_code,
+
+          name,
+        },
+        output: data
+      })
     })
     .catch(msg => {
       dealError(res, new Error(msg))

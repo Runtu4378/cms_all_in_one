@@ -24,7 +24,16 @@ router.post('/vue', function (req, res) {
     libraryName: name
   });
   builder_process.start().then(function (data) {
-    dealRes(res, 200, data);
+    dealRes(res, 200, {
+      input: {
+        html_code: html_code,
+        css_code: css_code,
+        js_code: js_code,
+
+        name: name
+      },
+      output: data
+    });
   }).catch(function (msg) {
     dealError(res, new Error(msg));
   });
